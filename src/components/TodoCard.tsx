@@ -11,7 +11,7 @@ interface TodoCardProps {
 
 
 function postData<P extends object>(Component: React.ComponentType<P & TodoCardProps>) {
-  const DataComponent = function (props: P): JSX.Element {
+  const DataComponent = function (props: P & Omit<TodoCardProps, 'item'> & { item: TodoIF }): JSX.Element {
     const queryClient = useQueryClient()
     // Mutations
     const updateMutation = useMutation({
